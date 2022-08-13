@@ -3,7 +3,7 @@ FROM ${BASE_IMAGE}
 
 ARG PROJECT_NAME=UString
 ARG USER_NAME=ShotaNishiyama
-ARG PYTHON_VERSION=3.7
+ARG PYTHON_VERSION=3.8
 ARG APPLICATION_DIRECTORY=/home/${USER_NAME}/${PROJECT_NAME}
 
 ENV DEBIAN_FRONTEND="noninteractive" \
@@ -11,7 +11,7 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     LANG="C.UTF-8" \
     PYTHONPATH=${APPLICATION_DIRECTORY}
 
-# Following is needed to install python 3.7
+# Following is needed to install python 3.8
 RUN apt update && apt install --no-install-recommends -y software-properties-common 
 RUN add-apt-repository ppa:deadsnakes/ppa
 
@@ -20,12 +20,15 @@ RUN apt install --no-install-recommends -y \
     gcc \
     git curl make ssh openssh-client \
     python${PYTHON_VERSION} python3-pip \
-    python3-dev
-
+    python3.8-dev \
+    ffmpeg \
+    libsm6 \
+    libxext6
 # Following is needed to swtich default python3 version
 # For detail, please check following link https://unix.stackexchange.com/questions/410579/change-the-python3-default-version-in-ubuntu
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python${PYTHON_VERSION} 1 
-RUN update-alternatives --set python3 /usr/bin/python${PYTHON_VERSION} 
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python${PYTHON_VERSION} 1 \
+    && update-alternatives --set python3 /usr/bin/python${PYTHON_VERSION}
+
 RUN apt-get install -y python-setuptools
 RUN pip3 install -U setuptools
 RUN pip3 install --upgrade pip
