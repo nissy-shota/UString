@@ -9,7 +9,7 @@ services:
     build:
       args:
         - BASE_IMAGE=nvidia/cuda:10.0-cudnn7-runtime-ubuntu18.04
-        - PYTHON_VERSION=3.7
+        - PYTHON_VERSION=3.8
       context: ../../
       dockerfile: environments/Dockerfile
     user: 1000:1000
