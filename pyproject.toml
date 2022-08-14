@@ -30,19 +30,22 @@ torch = "^1.12.1"
 torchvision = "^0.13.1"
 Cython = "^0.29.32"
 pycocotools = "^2.0.4"
-mmcv = "^1.6.1"
 numba = "^0.56.0"
-opencv-python = "^4.6.0"
 scikit-image = "^0.19.3"
 imageio = "^2.21.1"
 youtube_dl = "^2021.12.17"
 seaborn = "^0.11.2"
 scikit-learn = "^1.1.2"
 ipdb = "^0.13.9"
-PyYAML = "^6.0"
 tqdm = "^4.64.0"
+mmdet = "^2.25.1"
+opencv-python = "^4.6.0"
 
 
+
+[tool.poetry.dev-dependencies]
+flake8 = "^5.0.4"
+black = {version = "^22.6.0", allow-prereleases = true}
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
