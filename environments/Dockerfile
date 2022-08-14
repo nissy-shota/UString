@@ -34,8 +34,9 @@ RUN pip3 install -U setuptools
 RUN pip3 install --upgrade pip
 RUN pip3 install poetry
 
-
-
+## for develop
+RUN apt install --no-install-recommends -y \
+    bash-completion
 # Add user. Without this, following process is executed as admin. 
 RUN useradd -ms /bin/sh ${USER_NAME}
 USER ${USER_NAME}
