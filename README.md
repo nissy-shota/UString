@@ -62,5 +62,3 @@ python3 demo.py --task inference --feature_file demo/000821_vis_feature.npz
 
 [UString](https://github.com/Cogito2012/UString)
 
-
-python demo.py --task inference --feature_file $FEAT_FILE --ckpt_file demo/final_model_ccd.pth 
