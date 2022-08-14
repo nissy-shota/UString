@@ -58,6 +58,13 @@ inference
 python3 demo.py --task inference --feature_file demo/000821_vis_feature.npz
 ```
 
+visualization
+```bash
+python3 demo.py --task visualize  --video_file demo/000821_vis.gif --result_file demo/000821_result.npz
+```
+> **Note**
+> visualization and inference container are same. 
+
 ## reference
 
 [UString](https://github.com/Cogito2012/UString)
