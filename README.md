@@ -7,11 +7,22 @@
 docker compose build
 docker compose up -d
 docker compose exec core bash
-poetry install
-poetry shell
-pip install torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
-# pip3 install -U openmim
-# mim install mmcv-full
+python3 -m pip install torch==1.2.0
+python3 -m pip install torchvision==0.4.0
+python3 -m pip install Cython==0.29.13
+python3 -m pip install pycocotools==2.0.0
+python3 -m pip install -r requirements.txt
+
+mkdir lib
+cd lib
+git clone https://github.com/open-mmlab/mmdetection.git
+cd mmdetection
+git checkout v1.1.0  # important!
+cp -r Cascade\ R-CNN/* ./
+# compile & install
+pip install -v -e .
+cd ..
+python3 -m pip install mmdetection/
 ```
 [mmcv for torch 1.12.1](https://github.com/open-mmlab/mmcv/releases/tag/v1.6.1)
 
