@@ -10,8 +10,8 @@ docker compose exec core bash
 poetry install
 poetry shell
 pip install torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
-pip3 install -U openmim
-mim install mmcv-full
+# pip3 install -U openmim
+# mim install mmcv-full
 ```
 [mmcv for torch 1.12.1](https://github.com/open-mmlab/mmcv/releases/tag/v1.6.1)
 
@@ -22,12 +22,19 @@ dpkg -l | grep "cudnn"
 ```
 
 ## Demo
+feature extraction
 ```bash
-python demo.py --task extract_feature --video_file demo/000821_vis.gif
+python3 demo.py --task extract_feature --video_file demo/000821_vis.gif
+```
+
+inference
+```bash
+python3 demo.py --task inference --feature_file demo/000821_vis_feature.npz
 ```
 
 ## reference
 
 [UString](https://github.com/Cogito2012/UString)
 
-pip install mmcv-full=={1.1.6} -f https://download.openmmlab.com/mmcv/dist/cu102/torch1.12.1/index.html
+
+python demo.py --task inference --feature_file $FEAT_FILE --ckpt_file demo/final_model_ccd.pth 
