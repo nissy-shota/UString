@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=nvidia/cuda:10.0-cudnn7-runtime-ubuntu18.04
+ARG BASE_IMAGE=nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
 FROM ${BASE_IMAGE}
 
 ARG PROJECT_NAME=UString
@@ -23,7 +23,8 @@ RUN apt install --no-install-recommends -y \
     python3.8-dev \
     ffmpeg \
     libsm6 \
-    libxext6
+    libxext6 \
+    g++
 # Following is needed to swtich default python3 version
 # For detail, please check following link https://unix.stackexchange.com/questions/410579/change-the-python3-default-version-in-ubuntu
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python${PYTHON_VERSION} 1 \
