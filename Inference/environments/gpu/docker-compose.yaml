@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  inference:
+    container_name: UString
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    build:
+      args:
+        - nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
+        - PYTHON_VERSION=3.7
+      context: ../../
+      dockerfile: environments/Dockerfile
+    user: 1000:1000
+    tty: true
+    volumes:
+      - ../../../:/home/ShotaNishiyama/UString
+    ports:
+      - 49154:49154
